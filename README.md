@@ -1,8 +1,8 @@
 ## EDGAR Analytics Coding Challenge
 
-The way I use is pretty simple. It can be divided into two main parts.
+The way I use is pretty simple. It can be divided into three main parts.
 
-### 1、Data structures to store data:
+### 1、Data structures to store data
 
 *  **One integer (`period`)**: 
 
@@ -16,7 +16,7 @@ The way I use is pretty simple. It can be divided into two main parts.
 
 
 
-### 2、Then read the log line by line, process the data and write the information if a session is over.
+### 2、Read the log line by line, process the data and write the information if a session is over
 
    When reading a line, what we need to do is:
 
@@ -29,12 +29,22 @@ The way I use is pretty simple. It can be divided into two main parts.
    *  Write the information of this session to the **`output file`**
    *  Remove all information related to this user in the data structure(**`users`**, **`user_start`**, **`user_end`** and **`user_docs`**).
     
-*  **Update the information of the read user.**
+*  **Update the information of the user we read now.**
 
    If this user is in a session (can be found in **`users`** list), we just need to update its' last access time(**`user_end`**) and increase the number of visited documents by 1.(**`user_docs`** +1)
 
    If not, this means it is a new user and we need to initialize a new session for this user.  So we do:
        
    *  Add this user to the current users list. (**`users`**)
-   *  Initialize both its' start and end access time to now.(**`user_start`**, **`user_end`**)
+   *  Initialize both its' start and end access time to be the current time.(**`user_start`**, **`user_end`**)
    *  Initialize its' visited document to be 1.(**`user_docs`**)
+ 
+
+
+### 3、After reading the log
+   
+   At that time, all sessions are over. So:
+   *  Find all sessions by looking through all the current active users.
+   *  Write the information of these sessions to the **`output file`**.
+   *  Release all the current users.
+  
