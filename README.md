@@ -1,6 +1,6 @@
-# EDGAR Analytics Coding Challenge
+## EDGAR Analytics Coding Challenge
 
-The way I use is pretty simple. It can divide into the following two main parts.
+The way I use is pretty simple. It can be divided into two main parts.
 
 ### 1、Data structures to store data:
 
